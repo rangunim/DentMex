@@ -1,0 +1,9 @@
+Administrator:
+admin
+admin
+
+
+Pacjenci w bazie:
+patient1 , pateint2 .... (mozna wlasnych zarejestrowac)
+michal1     <-has³o
+
