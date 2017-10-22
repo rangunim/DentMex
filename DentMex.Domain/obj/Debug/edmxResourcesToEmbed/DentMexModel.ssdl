@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bazaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="AccountId" />
+    </Key>
+    <Property Name="AccountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountLogin" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="AccountPassword" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="InsuranceNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Pesel" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Address" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="PostalCode" Type="nvarchar" MaxLength="6" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="12" Nullable="false" />
+    <Property Name="CityId" Type="smallint" Nullable="false" />
+    <Property Name="GenderId" Type="smallint" />
+    <Property Name="UserRoleId" Type="smallint" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CityName" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="GenderId" />
+    </Key>
+    <Property Name="GenderId" Type="smallint" Nullable="false" />
+    <Property Name="GenderName" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PatientCard">
+    <Key>
+      <PropertyRef Name="PatientCardId" />
+    </Key>
+    <Property Name="PatientCardId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PateintId" Type="int" Nullable="false" />
+    <Property Name="Descryption" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Recipe">
+    <Key>
+      <PropertyRef Name="RecipeId" />
+    </Key>
+    <Property Name="RecipeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Medicamente" Type="varchar" MaxLength="255" />
+    <Property Name="isFree" Type="bit" />
+  </EntityType>
+  <EntityType Name="SavePatient2Visit">
+    <Key>
+      <PropertyRef Name="SavePatient2VisitId" />
+    </Key>
+    <Property Name="SavePatient2VisitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PatientId" Type="int" Nullable="false" />
+    <Property Name="VisitId" Type="int" Nullable="false" />
+    <Property Name="Cost" Type="money" />
+  </EntityType>
+  <EntityType Name="TimeTable">
+    <Key>
+      <PropertyRef Name="TimeTableId" />
+    </Key>
+    <Property Name="TimeTableId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AccountId" Type="int" Nullable="false" />
+    <Property Name="Active" Type="bit" />
+    <Property Name="DayOfWeek" Type="smallint" />
+    <Property Name="Time" Type="smallint" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserRoleId" />
+    </Key>
+    <Property Name="UserRoleId" Type="smallint" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Visit">
+    <Key>
+      <PropertyRef Name="VisitId" />
+    </Key>
+    <Property Name="VisitId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DentistId" Type="int" Nullable="false" />
+    <Property Name="PateintId" Type="int" />
+    <Property Name="VisitStateId" Type="int" Nullable="false" />
+    <Property Name="DateOfVisit" Type="date" />
+    <Property Name="TimeOfVisit" Type="int" />
+    <Property Name="MakeServices" Type="nvarchar" MaxLength="100" />
+    <Property Name="Price" Type="money" />
+    <Property Name="RecipeId" Type="int" />
+  </EntityType>
+  <EntityType Name="VisitState">
+    <Key>
+      <PropertyRef Name="VisitStateId" />
+    </Key>
+    <Property Name="VisitStateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VisitStateName" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__Account__CityId__182C9B23">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account__GenderI__1920BF5C">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="GenderId" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="GenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account__UserRol__1A14E395">
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRole">
+        <PropertyRef Name="UserRoleId" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="UserRoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PatientCa__Patei__2D27B809">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="PatientCard" Type="Self.PatientCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountId" />
+      </Principal>
+      <Dependent Role="PatientCard">
+        <PropertyRef Name="PateintId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SavePatie__Patie__29572725">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="SavePatient2Visit" Type="Self.SavePatient2Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountId" />
+      </Principal>
+      <Dependent Role="SavePatient2Visit">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SavePatie__Visit__2A4B4B5E">
+    <End Role="Visit" Type="Self.Visit" Multiplicity="1" />
+    <End Role="SavePatient2Visit" Type="Self.SavePatient2Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Visit">
+        <PropertyRef Name="VisitId" />
+      </Principal>
+      <Dependent Role="SavePatient2Visit">
+        <PropertyRef Name="VisitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TimeTable__Accou__1CF15040">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="TimeTable" Type="Self.TimeTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountId" />
+      </Principal>
+      <Dependent Role="TimeTable">
+        <PropertyRef Name="AccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Visit__DentistId__239E4DCF">
+    <End Role="Account" Type="Self.Account" Multiplicity="1" />
+    <End Role="Visit" Type="Self.Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountId" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="DentistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Visit__PateintId__24927208">
+    <End Role="Account" Type="Self.Account" Multiplicity="0..1" />
+    <End Role="Visit" Type="Self.Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountId" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="PateintId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Visit__RecipeId__267ABA7A">
+    <End Role="Recipe" Type="Self.Recipe" Multiplicity="0..1" />
+    <End Role="Visit" Type="Self.Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recipe">
+        <PropertyRef Name="RecipeId" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="RecipeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Visit__VisitStat__25869641">
+    <End Role="VisitState" Type="Self.VisitState" Multiplicity="1" />
+    <End Role="Visit" Type="Self.Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VisitState">
+        <PropertyRef Name="VisitStateId" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="VisitStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="bazaModelStoreContainer">
+    <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientCard" EntityType="Self.PatientCard" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Recipe" EntityType="Self.Recipe" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SavePatient2Visit" EntityType="Self.SavePatient2Visit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TimeTable" EntityType="Self.TimeTable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Visit" EntityType="Self.Visit" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VisitState" EntityType="Self.VisitState" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Account__CityId__182C9B23" Association="Self.FK__Account__CityId__182C9B23">
+      <End Role="City" EntitySet="City" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account__GenderI__1920BF5C" Association="Self.FK__Account__GenderI__1920BF5C">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account__UserRol__1A14E395" Association="Self.FK__Account__UserRol__1A14E395">
+      <End Role="UserRole" EntitySet="UserRole" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PatientCa__Patei__2D27B809" Association="Self.FK__PatientCa__Patei__2D27B809">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="PatientCard" EntitySet="PatientCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SavePatie__Patie__29572725" Association="Self.FK__SavePatie__Patie__29572725">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="SavePatient2Visit" EntitySet="SavePatient2Visit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SavePatie__Visit__2A4B4B5E" Association="Self.FK__SavePatie__Visit__2A4B4B5E">
+      <End Role="Visit" EntitySet="Visit" />
+      <End Role="SavePatient2Visit" EntitySet="SavePatient2Visit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TimeTable__Accou__1CF15040" Association="Self.FK__TimeTable__Accou__1CF15040">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="TimeTable" EntitySet="TimeTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Visit__DentistId__239E4DCF" Association="Self.FK__Visit__DentistId__239E4DCF">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Visit" EntitySet="Visit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Visit__PateintId__24927208" Association="Self.FK__Visit__PateintId__24927208">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Visit" EntitySet="Visit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Visit__RecipeId__267ABA7A" Association="Self.FK__Visit__RecipeId__267ABA7A">
+      <End Role="Recipe" EntitySet="Recipe" />
+      <End Role="Visit" EntitySet="Visit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Visit__VisitStat__25869641" Association="Self.FK__Visit__VisitStat__25869641">
+      <End Role="VisitState" EntitySet="VisitState" />
+      <End Role="Visit" EntitySet="Visit" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

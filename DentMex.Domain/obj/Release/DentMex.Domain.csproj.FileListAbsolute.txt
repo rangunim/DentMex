@@ -1,0 +1,10 @@
+C:\Users\Administrator\Desktop\DentMex\DentMex.Domain\bin\Release\DentMex.Domain.dll.config
+C:\Users\Administrator\Desktop\DentMex\DentMex.Domain\bin\Release\DentMex.Domain.dll
+C:\Users\Administrator\Desktop\DentMex\DentMex.Domain\bin\Release\DentMex.Domain.pdb
+C:\Users\Administrator\Desktop\DentMex\DentMex.Domain\bin\Release\EntityFramework.dll
+C:\Users\Administrator\Desktop\DentMex\DentMex.Domain\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Administrator\Desktop\DentMex\DentMex.Domain\bin\Release\EntityFramework.xml
+C:\Users\Administrator\Desktop\DentMex\DentMex.Domain\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Administrator\Desktop\DentMex\DentMex.Domain\obj\Release\DentMex.Domain.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\DentMex\DentMex.Domain\obj\Release\DentMex.Domain.dll
+C:\Users\Administrator\Desktop\DentMex\DentMex.Domain\obj\Release\DentMex.Domain.pdb

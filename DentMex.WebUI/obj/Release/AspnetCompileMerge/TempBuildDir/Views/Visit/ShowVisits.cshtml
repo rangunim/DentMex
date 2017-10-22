@@ -1,0 +1,115 @@
+﻿@model DentMex.WebUI.Models.Visit.ShowVisitsViewModel
+@{
+    ViewBag.Title = "Lista wizyt";
+}
+
+@section scripts
+{
+    <script>
+    function deleteAccount(id) {
+        var d = confirm("Czy na pewno chcesz anulować wizytę " + id + " ? Akcja jest nieodwracalna!");
+        var link = "@Url.Action("DeleteVisit", "Visit")?id=" + id;
+            if (d) {
+                window.location.assign(link);
+            }
+        }
+
+        function acceptVisit(id) {
+            var d = confirm("Czy na pewno chcesz zatwierdzić wizytę " + id + " ? Akcja jest nieodwracalna!");
+            var link = "@Url.Action("AcceptVisit", "Visit")?id=" + id;
+            if (d) {
+                window.location.assign(link);
+            }
+        }
+    </script>
+
+
+
+}
+
+<h2>Wizyty zaplanowane pacjenta </h2>
+<hr />
+@if(TempData ["isError"] != null)
+{
+    if((bool) TempData ["isError"])
+    {
+        <div class="alert alert-danger" role="alert">
+            @Html.Raw(TempData ["message"])
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success" role="alert">
+            @Html.Raw(TempData ["message"])
+        </div>
+    }
+    <br />
+}
+
+<br />
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr class="active">
+                <th>Lp</th>
+                <th>Id Wizyty</th>
+                <th>Stomatolog</th>
+                <th>Planowane zabiegi</th>
+                <th>Szacunkowy koszt</th>
+                <th>Status wizyty</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{int i = 0;}
+
+            @foreach(var vis in Model.Visits)
+            {
+                    if(@vis.VisitStateId != 4)
+                    { 
+                        <tr>
+                            <td>@(++i)</td>
+                            <td>@vis.VisitId</td>
+                            <td>@Model.DentistsNames.ElementAt(i - 1)</td>
+                            <td>@vis.MakeServices</td>
+                            <td>@vis.Price</td>
+                            @if(@vis.VisitStateId == 1)
+                            {
+                                <td>Utworzono </td>
+                            }
+                     
+                            @if(@vis.VisitStateId == 2)
+                            {
+                                    <td>Zatwierdzono</td>
+                            }     
+                    
+                            @if(@vis.VisitStateId == 3)
+                            {
+                               <td>Zrealizowano </td>
+                            }
+                           
+                                   
+
+                              <td>
+                                @if(@vis.VisitStateId == 1)
+                                { 
+                                    <a href="#" onclick="acceptVisit('@vis.VisitId');" class="btn btn-primary">Zatwierdź wizytę</a>
+                                    @Html.ActionLink("Edytuj", "EditVisit", "Visit", new { id = vis.VisitId}, new { @class = "btn btn-primary" })
+                                    <a href="#" onclick="deleteAccount('@vis.VisitId');" class="btn btn-primary">Anuluj wizytę</a>
+                                }
+                               
+                            </td>
+                        </tr>
+                    }
+          }
+                    
+                    
+
+        </tbody>
+    </table>
+</div>
+
+
+
+   
+

@@ -1,0 +1,12 @@
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Debug\DentMex.Logic.dll.config
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Debug\DentMex.Logic.dll
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Debug\DentMex.Logic.pdb
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Debug\DentMex.Domain.dll
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Debug\EntityFramework.dll
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Debug\DentMex.Domain.pdb
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Debug\EntityFramework.xml
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\obj\Debug\DentMex.Logic.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\obj\Debug\DentMex.Logic.dll
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\obj\Debug\DentMex.Logic.pdb

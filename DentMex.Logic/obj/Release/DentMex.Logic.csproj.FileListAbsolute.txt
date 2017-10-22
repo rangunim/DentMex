@@ -1,0 +1,12 @@
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Release\DentMex.Logic.dll.config
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Release\DentMex.Logic.dll
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Release\DentMex.Logic.pdb
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Release\DentMex.Domain.dll
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Release\EntityFramework.dll
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Release\DentMex.Domain.pdb
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Release\EntityFramework.xml
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\obj\Release\DentMex.Logic.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\obj\Release\DentMex.Logic.dll
+C:\Users\Administrator\Desktop\DentMex\DentMex.Logic\obj\Release\DentMex.Logic.pdb

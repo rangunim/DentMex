@@ -1,0 +1,37 @@
+﻿@model DentMex.WebUI.Models.Account.EditPermissionsViewModel
+@{
+    ViewBag.Title = "Edycja uprawnień";
+}
+
+<h2>Edycja uprawnień do konta</h2>
+
+<hr />
+@using(Html.BeginForm())
+{
+    if(ViewBag.isError != null)
+    {
+        if(ViewBag.isError)
+        {
+            <div class="alert alert-danger" role="alert">
+                @Html.Raw(ViewBag.Message)
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success" role="alert">
+                @ViewBag.Message
+            </div>
+        }
+    }
+    <div class="form-group row " style="padding:10px">
+        @Html.Label("Rola użytkownika ", new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+        @Html.DropDownListFor(m => m.UserRoleId, new SelectList(Model.UserRoleList, "UserRoleId", "RoleName"), new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zmień</button>
+    <a href="@Model.PreviousPage" class="btn btn-default btn-md">Powrót</a>
+
+    @Html.HiddenFor(m => m.AccountLogin)
+    @Html.HiddenFor(m => m.PreviousPage)
+
+}

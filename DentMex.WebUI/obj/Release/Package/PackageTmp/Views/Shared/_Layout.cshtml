@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - DentMex</title>
+    @Styles.Render("~/Content/css")
+    @RenderSection("AdditionalStyles", false)
+    @Scripts.Render("~/bundles/modernizr")
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <style>
+        @RenderSection("PageStyles", false)
+    </style>
+
+</head>
+<body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("DentMex", "Index", "Home", null, new { @class = "navbar-brand logo" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("O nas", "About", "Home")</li>
+                    <li>@Html.ActionLink("Cennik", "Prices", "Home")</li>
+                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if(Context.User.Identity.IsAuthenticated)
+                    {
+                        <li class="navbar-text">Witaj, @Context.User.Identity.Name! &nbsp; &nbsp;</li>
+                        <li>@Html.ActionLink("Edytuj", "EditAccount", "Account")</li>
+                        <li> <a class="logout" href="@Url.Action("Logout", "Account")">Wyloguj</a></li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Logowanie", "Login", "Account")</li>
+                        <li>@Html.ActionLink("Rejestracja", "Register", "Account")</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+@if(Context.User.Identity.IsAuthenticated)
+{
+   
+        <nav class="navbar navbar-default no-margin">
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  <li class="active"><button class="navbar-toggle collapse in" data-toggle="collapse" id="menu-toggle-2"> <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span></button></li>
+            </ul>
+        </div>
+    </nav> 
+
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
+
+               @if(Context.User.IsInRole("Pacjent"))
+               {
+                    <li> <span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span> @Html.ActionLink("Moja karta pacjenta", "ShowPatientCard", "PatientCard") </li>
+                    <li> <span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span> @Html.ActionLink("Zaplanowane wizyty", "ShowVisits", "Visit") </li>
+                    <li> <span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span> @Html.ActionLink(" Zapisz na nową wizytę", "Save2Visit", "Visit") </li>
+               
+               }
+               else if(Context.User.IsInRole("Administrator"))
+               { 
+                    <li> <span class="fa-stack fa-lg pull-left"><i class="fa fa-flag fa-stack-1x "></i></span> @Html.ActionLink("Pokaż użytkowników", "ShowAccounts", "Account") </li>
+               }
+               
+            </ul>
+        </div><!-- /#sidebar-wrapper -->
+     </div>
+}
+       
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Michał Stężała</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/validation")
+    @RenderSection("scripts", false)
+</body>
+
+</html>

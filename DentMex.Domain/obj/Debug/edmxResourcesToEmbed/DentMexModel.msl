@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="bazaModelStoreContainer" CdmEntityContainer="bazaEntities">
+    <EntitySetMapping Name="Account">
+      <EntityTypeMapping TypeName="bazaModel.Account">
+        <MappingFragment StoreEntitySet="Account">
+          <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+          <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Pesel" ColumnName="Pesel" />
+          <ScalarProperty Name="InsuranceNumber" ColumnName="InsuranceNumber" />
+          <ScalarProperty Name="AccountPassword" ColumnName="AccountPassword" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="AccountLogin" ColumnName="AccountLogin" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="bazaModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gender">
+      <EntityTypeMapping TypeName="bazaModel.Gender">
+        <MappingFragment StoreEntitySet="Gender">
+          <ScalarProperty Name="GenderName" ColumnName="GenderName" />
+          <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientCard">
+      <EntityTypeMapping TypeName="bazaModel.PatientCard">
+        <MappingFragment StoreEntitySet="PatientCard">
+          <ScalarProperty Name="Descryption" ColumnName="Descryption" />
+          <ScalarProperty Name="PateintId" ColumnName="PateintId" />
+          <ScalarProperty Name="PatientCardId" ColumnName="PatientCardId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Recipe">
+      <EntityTypeMapping TypeName="bazaModel.Recipe">
+        <MappingFragment StoreEntitySet="Recipe">
+          <ScalarProperty Name="isFree" ColumnName="isFree" />
+          <ScalarProperty Name="Medicamente" ColumnName="Medicamente" />
+          <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SavePatient2Visit">
+      <EntityTypeMapping TypeName="bazaModel.SavePatient2Visit">
+        <MappingFragment StoreEntitySet="SavePatient2Visit">
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="VisitId" ColumnName="VisitId" />
+          <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+          <ScalarProperty Name="SavePatient2VisitId" ColumnName="SavePatient2VisitId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TimeTable">
+      <EntityTypeMapping TypeName="bazaModel.TimeTable">
+        <MappingFragment StoreEntitySet="TimeTable">
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="DayOfWeek" ColumnName="DayOfWeek" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          <ScalarProperty Name="TimeTableId" ColumnName="TimeTableId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRole">
+      <EntityTypeMapping TypeName="bazaModel.UserRole">
+        <MappingFragment StoreEntitySet="UserRole">
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Visit">
+      <EntityTypeMapping TypeName="bazaModel.Visit">
+        <MappingFragment StoreEntitySet="Visit">
+          <ScalarProperty Name="RecipeId" ColumnName="RecipeId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="MakeServices" ColumnName="MakeServices" />
+          <ScalarProperty Name="TimeOfVisit" ColumnName="TimeOfVisit" />
+          <ScalarProperty Name="DateOfVisit" ColumnName="DateOfVisit" />
+          <ScalarProperty Name="VisitStateId" ColumnName="VisitStateId" />
+          <ScalarProperty Name="PateintId" ColumnName="PateintId" />
+          <ScalarProperty Name="DentistId" ColumnName="DentistId" />
+          <ScalarProperty Name="VisitId" ColumnName="VisitId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VisitState">
+      <EntityTypeMapping TypeName="bazaModel.VisitState">
+        <MappingFragment StoreEntitySet="VisitState">
+          <ScalarProperty Name="VisitStateName" ColumnName="VisitStateName" />
+          <ScalarProperty Name="VisitStateId" ColumnName="VisitStateId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

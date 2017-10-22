@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e532c38653b84a2296b676e6302173fc" Name="Diagram1" ZoomLevel="89">
+        <EntityTypeShape EntityType="bazaModel.Account" Width="1.5" PointX="3" PointY="4.5" />
+        <EntityTypeShape EntityType="bazaModel.City" Width="1.5" PointX="0.75" PointY="3" />
+        <EntityTypeShape EntityType="bazaModel.Gender" Width="1.5" PointX="0.75" PointY="6.125" />
+        <EntityTypeShape EntityType="bazaModel.PatientCard" Width="1.5" PointX="5.25" PointY="14" />
+        <EntityTypeShape EntityType="bazaModel.Recipe" Width="1.5" PointX="3" PointY="2" />
+        <EntityTypeShape EntityType="bazaModel.SavePatient2Visit" Width="1.5" PointX="7.5" PointY="5.75" />
+        <EntityTypeShape EntityType="bazaModel.TimeTable" Width="1.5" PointX="5.25" PointY="8.625" />
+        <EntityTypeShape EntityType="bazaModel.UserRole" Width="1.5" PointX="0.75" PointY="9.25" />
+        <EntityTypeShape EntityType="bazaModel.Visit" Width="1.5" PointX="5.25" PointY="4.25" />
+        <EntityTypeShape EntityType="bazaModel.VisitState" Width="1.5" PointX="3" PointY="10.25" />
+        <AssociationConnector Association="bazaModel.FK__Account__CityId__182C9B23" />
+        <AssociationConnector Association="bazaModel.FK__Account__GenderI__1920BF5C" />
+        <AssociationConnector Association="bazaModel.FK__Account__UserRol__1A14E395" />
+        <AssociationConnector Association="bazaModel.FK__PatientCa__Patei__2D27B809" />
+        <AssociationConnector Association="bazaModel.FK__SavePatie__Patie__29572725" />
+        <AssociationConnector Association="bazaModel.FK__TimeTable__Accou__1CF15040" />
+        <AssociationConnector Association="bazaModel.FK__Visit__DentistId__239E4DCF" />
+        <AssociationConnector Association="bazaModel.FK__Visit__PateintId__24927208" />
+        <AssociationConnector Association="bazaModel.FK__Visit__RecipeId__267ABA7A" />
+        <AssociationConnector Association="bazaModel.FK__SavePatie__Visit__2A4B4B5E" />
+        <AssociationConnector Association="bazaModel.FK__Visit__VisitStat__25869641" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

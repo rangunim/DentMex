@@ -1,0 +1,129 @@
+﻿@model DentMex.WebUI.Models.Visit.Save2VisitViewModel
+@{
+    ViewBag.Title = "Zapis na nową wizytę";
+}
+
+@section AdditionalStyles
+{
+    @Styles.Render("~/Content/datepicker")
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/datepicker")
+
+    <script>
+        $(document).ready(function () {
+            $('.Date').datepicker({
+
+            format: "yyyy-mm-dd",
+            todayBtn: "linked",
+            language: "pl",
+            setDate: new Date(),
+            autoclose: true
+        });
+        });
+    </script>
+}
+
+<br /> <br /> <br /> <br /> <br /> <br />
+<h2>Zapis na nową wizytę</h2>
+<hr />
+
+@if(ViewBag.isError != null)
+{
+    if(ViewBag.isError)
+    {
+        <div class="alert alert-danger" role="alert">
+            @Html.Raw(ViewBag.Message)
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success" role="alert">
+            @ViewBag.Message
+        </div>
+    }
+}
+
+<div class="form-group">
+    @using(Html.BeginForm())
+    {
+  
+        
+        <div class="row">
+            <div class="col-md-6 col-xs-6">
+                <div class="row">
+                    <div class="col-md-4 col-xs-6">
+                        @Html.LabelFor(m => m.Dentists, new { @class = "control-label" })
+                    </div>
+
+                    <div class="col-md-6 col-xs-6">
+                        @Html.DropDownListFor(m => m.DentistId, new SelectList(Model.Dentists, "AccountId", "FullName"), new { @class = "form-control" })
+                        <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                    </div>
+                   
+                </div>
+            </div>
+         </div>
+
+        <br />
+            <div class="row">
+                <div class="col-md-6 col-xs-6">
+                    <div class="row">
+                        <div class="col-md-4 col-xs-6">
+                            @Html.LabelFor(m => m.DateOfVisit, new { @class = "control-label" })
+                        </div>
+
+                        <div class="col-md-4 col-xs-6">
+                            @Html.TextBoxFor(m => Model.DateOfVisit, new { @class = "form-control Date" })
+                            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    <br />
+        
+    <div class="row">
+        <div class="col-md-6 col-xs-6">
+            <div class="row">
+                <div class="col-md-4 col-xs-6">
+                    @Html.LabelFor(m => m.TimeOfVisitValue, new { @class = "control-label" })
+                </div>
+
+                <div class="col-md-4 col-xs-6">
+                     @Html.DropDownListFor(x => x.TimeOfVisitValue, Model.TimeOfVisitValues, new { @class = "form-control" }) 
+   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="row">
+        <div class="col-md-6 col-xs-6">
+            <div class="row">
+                <div class="col-md-4 col-xs-6">
+                    @Html.LabelFor(m => m.MakeServices, new { @class = "control-label" })
+                </div>
+
+                <div class="col-md-8 col-xs-6">
+                    @Html.TextBoxFor( m=> m.MakeServices, new { @class = "form-control" } )
+
+                </div>
+            </div>
+        </div>
+    </div>
+        
+        
+    @Html.HiddenFor(m => m.ReturnLink)
+    @Html.HiddenFor(m => m.VisitId)
+    <br />
+    <input type="submit" value="Zapisz na nową wizytę" class="btn btn-primary col-md-4 col-xs-6">
+    <span>&emsp;</span>
+    <a href="@Model.ReturnLink" class="btn btn-default btn-md">Powrót</a>
+    }
+</div>
+
+

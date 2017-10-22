@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="bazaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="bazaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Account" EntityType="bazaModel.Account" />
+    <EntitySet Name="City" EntityType="bazaModel.City" />
+    <EntitySet Name="Gender" EntityType="bazaModel.Gender" />
+    <EntitySet Name="PatientCard" EntityType="bazaModel.PatientCard" />
+    <EntitySet Name="Recipe" EntityType="bazaModel.Recipe" />
+    <EntitySet Name="SavePatient2Visit" EntityType="bazaModel.SavePatient2Visit" />
+    <EntitySet Name="TimeTable" EntityType="bazaModel.TimeTable" />
+    <EntitySet Name="UserRole" EntityType="bazaModel.UserRole" />
+    <EntitySet Name="Visit" EntityType="bazaModel.Visit" />
+    <EntitySet Name="VisitState" EntityType="bazaModel.VisitState" />
+    <AssociationSet Name="FK__Account__CityId__182C9B23" Association="bazaModel.FK__Account__CityId__182C9B23">
+      <End Role="City" EntitySet="City" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account__GenderI__1920BF5C" Association="bazaModel.FK__Account__GenderI__1920BF5C">
+      <End Role="Gender" EntitySet="Gender" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Account__UserRol__1A14E395" Association="bazaModel.FK__Account__UserRol__1A14E395">
+      <End Role="UserRole" EntitySet="UserRole" />
+      <End Role="Account" EntitySet="Account" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PatientCa__Patei__2D27B809" Association="bazaModel.FK__PatientCa__Patei__2D27B809">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="PatientCard" EntitySet="PatientCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SavePatie__Patie__29572725" Association="bazaModel.FK__SavePatie__Patie__29572725">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="SavePatient2Visit" EntitySet="SavePatient2Visit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TimeTable__Accou__1CF15040" Association="bazaModel.FK__TimeTable__Accou__1CF15040">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="TimeTable" EntitySet="TimeTable" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Visit__DentistId__239E4DCF" Association="bazaModel.FK__Visit__DentistId__239E4DCF">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Visit" EntitySet="Visit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Visit__PateintId__24927208" Association="bazaModel.FK__Visit__PateintId__24927208">
+      <End Role="Account" EntitySet="Account" />
+      <End Role="Visit" EntitySet="Visit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Visit__RecipeId__267ABA7A" Association="bazaModel.FK__Visit__RecipeId__267ABA7A">
+      <End Role="Recipe" EntitySet="Recipe" />
+      <End Role="Visit" EntitySet="Visit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SavePatie__Visit__2A4B4B5E" Association="bazaModel.FK__SavePatie__Visit__2A4B4B5E">
+      <End Role="Visit" EntitySet="Visit" />
+      <End Role="SavePatient2Visit" EntitySet="SavePatient2Visit" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Visit__VisitStat__25869641" Association="bazaModel.FK__Visit__VisitStat__25869641">
+      <End Role="VisitState" EntitySet="VisitState" />
+      <End Role="Visit" EntitySet="Visit" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="AccountId" />
+    </Key>
+    <Property Name="AccountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountLogin" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="AccountPassword" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="false" />
+    <Property Name="InsuranceNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Pesel" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="70" FixedLength="false" Unicode="true" />
+    <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="true" />
+    <Property Name="CityId" Type="Int16" Nullable="false" />
+    <Property Name="GenderId" Type="Int16" />
+    <Property Name="UserRoleId" Type="Int16" />
+    <NavigationProperty Name="City" Relationship="bazaModel.FK__Account__CityId__182C9B23" FromRole="Account" ToRole="City" />
+    <NavigationProperty Name="Gender" Relationship="bazaModel.FK__Account__GenderI__1920BF5C" FromRole="Account" ToRole="Gender" />
+    <NavigationProperty Name="UserRole" Relationship="bazaModel.FK__Account__UserRol__1A14E395" FromRole="Account" ToRole="UserRole" />
+    <NavigationProperty Name="PatientCard" Relationship="bazaModel.FK__PatientCa__Patei__2D27B809" FromRole="Account" ToRole="PatientCard" />
+    <NavigationProperty Name="SavePatient2Visit" Relationship="bazaModel.FK__SavePatie__Patie__29572725" FromRole="Account" ToRole="SavePatient2Visit" />
+    <NavigationProperty Name="TimeTable" Relationship="bazaModel.FK__TimeTable__Accou__1CF15040" FromRole="Account" ToRole="TimeTable" />
+    <NavigationProperty Name="Visit" Relationship="bazaModel.FK__Visit__DentistId__239E4DCF" FromRole="Account" ToRole="Visit" />
+    <NavigationProperty Name="Visit1" Relationship="bazaModel.FK__Visit__PateintId__24927208" FromRole="Account" ToRole="Visit" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Account" Relationship="bazaModel.FK__Account__CityId__182C9B23" FromRole="City" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="GenderId" />
+    </Key>
+    <Property Name="GenderId" Type="Int16" Nullable="false" />
+    <Property Name="GenderName" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Account" Relationship="bazaModel.FK__Account__GenderI__1920BF5C" FromRole="Gender" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="PatientCard">
+    <Key>
+      <PropertyRef Name="PatientCardId" />
+    </Key>
+    <Property Name="PatientCardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PateintId" Type="Int32" Nullable="false" />
+    <Property Name="Descryption" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Account" Relationship="bazaModel.FK__PatientCa__Patei__2D27B809" FromRole="PatientCard" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Recipe">
+    <Key>
+      <PropertyRef Name="RecipeId" />
+    </Key>
+    <Property Name="RecipeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Medicamente" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="isFree" Type="Boolean" />
+    <NavigationProperty Name="Visit" Relationship="bazaModel.FK__Visit__RecipeId__267ABA7A" FromRole="Recipe" ToRole="Visit" />
+  </EntityType>
+  <EntityType Name="SavePatient2Visit">
+    <Key>
+      <PropertyRef Name="SavePatient2VisitId" />
+    </Key>
+    <Property Name="SavePatient2VisitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientId" Type="Int32" Nullable="false" />
+    <Property Name="VisitId" Type="Int32" Nullable="false" />
+    <Property Name="Cost" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="Account" Relationship="bazaModel.FK__SavePatie__Patie__29572725" FromRole="SavePatient2Visit" ToRole="Account" />
+    <NavigationProperty Name="Visit" Relationship="bazaModel.FK__SavePatie__Visit__2A4B4B5E" FromRole="SavePatient2Visit" ToRole="Visit" />
+  </EntityType>
+  <EntityType Name="TimeTable">
+    <Key>
+      <PropertyRef Name="TimeTableId" />
+    </Key>
+    <Property Name="TimeTableId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AccountId" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="DayOfWeek" Type="Int16" />
+    <Property Name="Time" Type="Int16" />
+    <NavigationProperty Name="Account" Relationship="bazaModel.FK__TimeTable__Accou__1CF15040" FromRole="TimeTable" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserRoleId" />
+    </Key>
+    <Property Name="UserRoleId" Type="Int16" Nullable="false" />
+    <Property Name="RoleName" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Account" Relationship="bazaModel.FK__Account__UserRol__1A14E395" FromRole="UserRole" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Visit">
+    <Key>
+      <PropertyRef Name="VisitId" />
+    </Key>
+    <Property Name="VisitId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DentistId" Type="Int32" Nullable="false" />
+    <Property Name="PateintId" Type="Int32" />
+    <Property Name="VisitStateId" Type="Int32" Nullable="false" />
+    <Property Name="DateOfVisit" Type="DateTime" Precision="0" />
+    <Property Name="TimeOfVisit" Type="Int32" />
+    <Property Name="MakeServices" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="RecipeId" Type="Int32" />
+    <NavigationProperty Name="Account" Relationship="bazaModel.FK__Visit__DentistId__239E4DCF" FromRole="Visit" ToRole="Account" />
+    <NavigationProperty Name="Account1" Relationship="bazaModel.FK__Visit__PateintId__24927208" FromRole="Visit" ToRole="Account" />
+    <NavigationProperty Name="Recipe" Relationship="bazaModel.FK__Visit__RecipeId__267ABA7A" FromRole="Visit" ToRole="Recipe" />
+    <NavigationProperty Name="SavePatient2Visit" Relationship="bazaModel.FK__SavePatie__Visit__2A4B4B5E" FromRole="Visit" ToRole="SavePatient2Visit" />
+    <NavigationProperty Name="VisitState" Relationship="bazaModel.FK__Visit__VisitStat__25869641" FromRole="Visit" ToRole="VisitState" />
+  </EntityType>
+  <EntityType Name="VisitState">
+    <Key>
+      <PropertyRef Name="VisitStateId" />
+    </Key>
+    <Property Name="VisitStateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="VisitStateName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Visit" Relationship="bazaModel.FK__Visit__VisitStat__25869641" FromRole="VisitState" ToRole="Visit" />
+  </EntityType>
+  <Association Name="FK__Account__CityId__182C9B23">
+    <End Type="bazaModel.City" Role="City" Multiplicity="1" />
+    <End Type="bazaModel.Account" Role="Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account__GenderI__1920BF5C">
+    <End Type="bazaModel.Gender" Role="Gender" Multiplicity="0..1" />
+    <End Type="bazaModel.Account" Role="Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="GenderId" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="GenderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Account__UserRol__1A14E395">
+    <End Type="bazaModel.UserRole" Role="UserRole" Multiplicity="0..1" />
+    <End Type="bazaModel.Account" Role="Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRole">
+        <PropertyRef Name="UserRoleId" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="UserRoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PatientCa__Patei__2D27B809">
+    <End Type="bazaModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="bazaModel.PatientCard" Role="PatientCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountId" />
+      </Principal>
+      <Dependent Role="PatientCard">
+        <PropertyRef Name="PateintId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SavePatie__Patie__29572725">
+    <End Type="bazaModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="bazaModel.SavePatient2Visit" Role="SavePatient2Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountId" />
+      </Principal>
+      <Dependent Role="SavePatient2Visit">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TimeTable__Accou__1CF15040">
+    <End Type="bazaModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="bazaModel.TimeTable" Role="TimeTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountId" />
+      </Principal>
+      <Dependent Role="TimeTable">
+        <PropertyRef Name="AccountId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Visit__DentistId__239E4DCF">
+    <End Type="bazaModel.Account" Role="Account" Multiplicity="1" />
+    <End Type="bazaModel.Visit" Role="Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountId" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="DentistId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Visit__PateintId__24927208">
+    <End Type="bazaModel.Account" Role="Account" Multiplicity="0..1" />
+    <End Type="bazaModel.Visit" Role="Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Account">
+        <PropertyRef Name="AccountId" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="PateintId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Visit__RecipeId__267ABA7A">
+    <End Type="bazaModel.Recipe" Role="Recipe" Multiplicity="0..1" />
+    <End Type="bazaModel.Visit" Role="Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Recipe">
+        <PropertyRef Name="RecipeId" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="RecipeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SavePatie__Visit__2A4B4B5E">
+    <End Type="bazaModel.Visit" Role="Visit" Multiplicity="1" />
+    <End Type="bazaModel.SavePatient2Visit" Role="SavePatient2Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Visit">
+        <PropertyRef Name="VisitId" />
+      </Principal>
+      <Dependent Role="SavePatient2Visit">
+        <PropertyRef Name="VisitId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Visit__VisitStat__25869641">
+    <End Type="bazaModel.VisitState" Role="VisitState" Multiplicity="1" />
+    <End Type="bazaModel.Visit" Role="Visit" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VisitState">
+        <PropertyRef Name="VisitStateId" />
+      </Principal>
+      <Dependent Role="Visit">
+        <PropertyRef Name="VisitStateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

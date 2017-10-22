@@ -1,0 +1,52 @@
+﻿@model DentMex.WebUI.Models.Account.LoginViewModel
+@{
+    ViewBag.Title = "Logowanie";
+}
+
+
+
+@using(Html.BeginForm())
+{
+    <div class="form-login">
+        <h2 class="form-login-heading"> Logowanie </h2>
+
+        @if(ViewBag.isError != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                <p>Błąd:  Podany login i/lub hasło nie zgadzają się! </p>
+            </div>
+        }
+
+        <div class="row">
+            <div class=" col-md-6 col-md-offset-3">
+                <div class="login-wrap">
+                    @Html.TextBoxFor(m => m.AccountLogin, new { @class = "form-control col-xs-12 ", placeholder = "Login", autofocus = "", id = "inputLogin" })
+                    @Html.ValidationMessageFor(m => m.AccountLogin)
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="login-wrap">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control col-xs-12", placeholder = "Hasło", id = "inputPassword" })
+                    @Html.ValidationMessageFor(m => m.Password)
+                </div>
+            </div>
+        </div>
+
+        <br />
+        <div class="row">
+            <div class="login-wrap">
+                <div class="col-md-1 col-md-offset-3">
+                    @Html.ActionLink("Rejestracja", "Register", null, new { @class = "as-link btn btn-default register-link" })
+                </div>
+                <div class="col-md-2 col-md-offset-1">
+                    <input type="submit" class="btn btn-primary login-button  col-xs-6" value="Zaloguj" />
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

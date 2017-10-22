@@ -1,0 +1,110 @@
+﻿@model DentMex.WebUI.Models.Account.RegisterViewModel
+@{
+    ViewBag.Title = "Rejestracja";
+}
+
+@if(ViewBag.register == null)
+{
+    <h2> Rejestracja nowego konta</h2>
+    <hr />
+
+    using(Html.BeginForm())
+    {
+        <div class="form-group row " style="padding:10px">
+            @Html.LabelFor(m => m.AccountLogin, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2 " })
+            @Html.TextBoxFor(m => m.AccountLogin,new { @class = "form-control", autofocus = ""})
+            @Html.ValidationMessageFor(m => m.AccountLogin)
+        </div>
+        <div class="form-group row " style="padding:10px">
+            @Html.LabelFor(m => m.Password, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+        <div class="form-group row " style="padding:10px">
+            @Html.LabelFor(m => m.RepeatPassword, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+            @Html.PasswordFor(m => m.RepeatPassword, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.RepeatPassword)
+        </div>
+        <div class="form-group row " style="padding:10px">
+            @Html.LabelFor(m => m.Email, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Email)
+        </div>
+
+        <div class="form-group row " style="padding:10px">
+            @Html.LabelFor(m => m.InsuranceNumber, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+            @Html.TextBoxFor(m => m.InsuranceNumber, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.InsuranceNumber)
+        </div>
+
+        <div class="form-group row " style="padding:10px">
+            @Html.LabelFor(m => m.Pesel, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+            @Html.TextBoxFor(m => m.Pesel, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Pesel)
+        </div>
+    
+        <hr />
+
+        <div class="form-group row " style="padding:10px">
+            @Html.LabelFor(m => m.FirstName, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.FirstName)
+        </div>
+        <div class="form-group row " style="padding:10px">
+            @Html.LabelFor(m => m.LastName, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.LastName)
+        </div>
+
+        <div class="form-group row " style="padding:10px">
+            @Html.LabelFor(m => m.GenderId, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+            @Html.DropDownListFor(m => m.GenderId, new SelectList(Model.Gender, "GenderId", "GenderName"), new { @class = "form-control" })
+        </div>
+    
+        <div class="form-group row " style="padding:10px">
+            @Html.LabelFor(m => m.Address, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+            @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Address)
+        </div>
+
+        <div class="form-group row " style="padding:10px">
+            @Html.LabelFor(m => m.PostalCode, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+            @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.PostalCode)
+        </div>
+    
+        <div class="form-group row " style="padding:10px">
+            @Html.LabelFor(m => m.CityId, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+            @Html.DropDownListFor(m => m.CityId, new SelectList(Model.City, "CityId", "CityName"), new { @class = "form-control" })
+        </div>
+    
+        <hr />
+
+        <div class="form-group row " style="padding:10px">
+            @Html.LabelFor(m => m.Phone, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+            @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Phone)
+        </div>
+
+        <div class="form-group row " style="padding:10px">
+            @Html.CheckBoxFor(m => Model.IsAcceptRule, new { @class = "checkbox-inline" })
+            @Html.Label("Akceptuje regulamin i zobowiązuję się do przestrzegania jego postanowień (*)", new { @class = "checkbox-inline" })
+            @Html.ValidationMessageFor(m => Model.IsAcceptRule)
+        </div>
+
+        <button type="submit" class="btn btn-primary">Zarejestruj</button>
+        <button type="reset" class="btn btn-primary">Wyczyść</button>
+
+    }
+
+}
+else if(ViewBag.Register == 1)
+{
+    <h2>Pomyślnie zarejestrowano!</h2>
+    <a href="@Url.Action("Login")" class="btn btn-primary">Logowanie</a>
+}
+else
+{
+    <h2>Wystąpił błąd przy rejestracji! Spróbuj ponownie.</h2>
+    <a href="@Url.Action("Register")" class="btn btn-primary">Rejestracja</a>
+}

@@ -1,0 +1,103 @@
+﻿@model DentMex.WebUI.Models.Account.EditAccountViewModel
+@{
+    ViewBag.Title = "Edycja konta";
+}
+
+<h2>Edycja konta</h2>
+
+<hr />
+@section scripts
+{
+    <script>
+        function deleteAccount() {
+            var d = confirm("Czy na pewno chcesz skasować konto? Akcja jest nieodwracalna!");
+            var link = "@Url.Action("DeleteAccount", "Account")";
+            if (d) {
+                window.location.assign(link);
+            }
+        }
+    </script>
+}
+@using(Html.BeginForm())
+{
+
+    if(ViewBag.isError != null)
+    {
+        if(ViewBag.isError)
+        {
+            <div class="alert alert-danger" role="alert">
+                @Html.Raw(ViewBag.Message)
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success" role="alert">
+                @ViewBag.Message
+            </div>
+        }
+    }
+
+    <div class="form-group row " style="padding:10px">
+        @Html.Label("Adres e-mail ", new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+        @Html.TextBoxFor(m => Model.Email, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => Model.Email)
+    </div>
+
+    <div class="form-group row " style="padding:10px">
+        @Html.Label("Hasło ", new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+        @Html.PasswordFor(m => Model.Password, new { @class = "form-control password" })
+        @Html.ValidationMessageFor(m => Model.Password)
+    </div>
+
+    <div class="form-group row " style="padding:10px">
+        @Html.Label("Nowe hasło ", new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+        @Html.PasswordFor(m => Model.NewPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => Model.NewPassword)
+    </div>
+    <div class="form-group row " style="padding:10px">
+        @Html.Label("Powtórz nowe hasło ", new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+        @Html.PasswordFor(m => Model.RepeatPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => Model.RepeatPassword)
+    </div>
+
+    <div class="form-group row " style="padding:10px">
+        @Html.LabelFor(m => m.InsuranceNumber, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+        @Html.TextBoxFor(m => m.InsuranceNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.InsuranceNumber)
+    </div>
+
+    <hr />
+
+    <div class="form-group row " style="padding:10px">
+        @Html.LabelFor(m => m.Address, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Address)
+    </div>
+
+    <div class="form-group row " style="padding:10px">
+        @Html.LabelFor(m => m.PostalCode, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+        @Html.TextBoxFor(m => m.PostalCode, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.PostalCode)
+    </div>
+
+    <div class="form-group row " style="padding:10px">
+        @Html.Label("Miasto", new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+        @Html.DropDownListFor(m => m.CityId, new SelectList(Model.City, "CityId", "CityName"), new { @class = "form-control" })
+    </div>
+    
+    <div class="form-group row " style="padding:10px">
+        @Html.LabelFor(m => m.Phone, new { @class = "control-label col-xs-12 col-sm-4 col-md-3 col-lg-2" })
+        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Phone)
+    </div>
+
+    @Html.HiddenFor(m => m.AccountId)
+    @Html.HiddenFor(m => m.PreviousPage)
+
+
+    <button type="submit" class="btn btn-primary">Zastosuj</button>
+    <a href=@Model.PreviousPage class="as-link btn btn-primary">Powrót</a>
+    <hr />
+    <a href="#" onclick=" deleteAccount();" class="btn btn-primary">Usuń konto</a>
+
+}
